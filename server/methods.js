@@ -52,6 +52,16 @@ function createTicket(topic, location, contact) {
     });
 
     _log("Ticket Created by " + this.userId);
+
+    if(Slack) {
+      try {
+        Slack.send({text:'A new ticket was just created on HACKq:\t*'+topic+'*\n'});
+        _log("Notified Slack of new ticket ("+topic+")");
+      }
+      catch(e){
+        _log("Failed to notify Slack of new ticket ("+topic+")");
+      }
+    }
   }
 }
 

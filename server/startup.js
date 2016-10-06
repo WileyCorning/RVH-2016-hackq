@@ -13,6 +13,7 @@ Meteor.startup(function(){
   addServiceIntegration('github', config.github);
   addFacebookIntegration(config.facebook);
   addServiceIntegration('google', config.google);
+  addSlackWebHook(config.slack);
 
   // Add Base Settings
   setBasicSettings(config);
@@ -79,6 +80,16 @@ function addFacebookIntegration(fb){
         secret: fb.secret
       }
     });
+  }
+}
+
+function addSlackWebHook(slack) {
+  if(slack.enable) {
+    var SlackAPI = Meteor.npmRequire('node-slack');
+    Slack = new SlackAPI( slack.hookUrl );
+  }
+  else {
+    Slack = null;
   }
 }
 

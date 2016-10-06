@@ -18,6 +18,10 @@
     "clientId": "google-client-id",
     "secret": "google-secret"
   },
+  "slack": {
+    "enable": false,
+    "hookUrl": "hookUrl"
+  }
   "settings": {
     "queueEnabled": true,
     "expirationDelay": 1800000
